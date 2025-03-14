@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/*
 class CartViewModel: ObservableObject {
     @Published var cartItems: [Product: Int] = [:]
 
@@ -26,3 +27,4 @@ class CartViewModel: ObservableObject {
         cartItems.reduce(0) { $0 + ($1.key.price * Double($1.value)) }
     }
 }
+*/

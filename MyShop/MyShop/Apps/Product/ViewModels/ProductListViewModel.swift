@@ -11,10 +11,22 @@ class ProductListViewModel: ObservableObject {
     @Published var products: [Product] = []
     private let service = ProductService()
 
+    func resetProduct() {
+        self.products = []
+    }
+    
     func loadProducts(for category: ProductCategory) {
-        service.fetchProducts(for: category) { [weak self] products in
-            DispatchQueue.main.async {
-                self?.products = products
+        if category == .all {
+            service.fetchAllProducts{ [weak self] products in
+                DispatchQueue.main.async {
+                    self?.products = products
+                }
+            }
+        } else {
+            service.fetchProducts(for: category) { [weak self] products in
+                DispatchQueue.main.async {
+                    self?.products = products
+                }
             }
         }
     }

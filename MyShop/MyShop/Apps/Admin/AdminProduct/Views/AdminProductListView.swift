@@ -24,7 +24,7 @@ struct AdminProductListView: View {
 
                     VStack(alignment: .leading) {
                         Text(product.name).font(.headline)
-                        Text("\(product.price, specifier: "%.2f") VND").font(.subheadline)
+                        Text("\(product.price, specifier: "%.0f") VND").font(.subheadline)
                     }
                     Spacer()
                     Button(action: { viewModel.deleteProduct(product) }) {

@@ -15,18 +15,22 @@ class AdminAddProductViewModel: ObservableObject {
     @Published var isUploading = false
 
     private let service = ProductService()
-    //private let cloudinaryService = CloudinaryService()
 
-    func uploadProduct() {
-        guard let imageData = selectedImage?.jpegData(compressionQuality: 0.8) else { return }
+    func uploadProduct(complete: @escaping (Bool) -> Void) {
+        guard let imageData = selectedImage?.jpegData(compressionQuality: 0.8) else {
+            complete(false)
+            return }
         isUploading = true
 
         CloudinaryService.shared.uploadImage(imageData: imageData) { [weak self] imageUrl in
-            guard let imageUrl = imageUrl, let priceValue = Double(self?.price ?? "") else { return }
+            guard let imageUrl = imageUrl, let priceValue = Double(self?.price ?? "") else {
+                complete(false)
+                return }
             let newProduct = Product(id: UUID().uuidString, name: self?.name ?? "", price: priceValue, imageUrl: imageUrl, category: self?.category ?? .food)
 
             self?.service.addProduct(newProduct) {
                 self?.isUploading = false
+                complete(true)
             }
         }
     }

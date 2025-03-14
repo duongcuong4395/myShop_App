@@ -24,8 +24,8 @@ struct Order: Codable, Identifiable {
 }
 
 
-struct CartItem: Codable, Identifiable {
+struct CartItem: Codable, Identifiable, Equatable {
     var id: String { product.id }
-    let product: Product
+    var product: Product
     var quantity: Int
 }

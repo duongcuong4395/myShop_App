@@ -6,20 +6,55 @@
 //
 
 import SwiftUI
+import ChipsSelection
 
 struct ProductCategoryView: View {
-    @StateObject private var viewModel = ProductCategoryViewModel()
-
+    @EnvironmentObject var productCategoryVM: ProductCategoryViewModel
+    @State var categoriesSelected:  [ProductCategory] = []
     var body: some View {
-        NavigationView {
-            List(viewModel.categories) { category in
-                NavigationLink(destination: ProductListView(category: category)) {
-                    Text(category.rawValue)
-                        .font(.title2)
-                        .padding()
-                }
+        VStack {
+            ChipsView(tags: productCategoryVM.categories
+                      , selectedTags: $categoriesSelected
+                      , isSelectOne: true) { item, isSelecttion in
+                ChipView(item, isSelected: isSelecttion)
+            } didChangeSelection: { itemsSelected in
+                productCategoryVM.categorySelected = itemsSelected[0]
             }
-            .navigationTitle("Danh mục sản phẩm")
+        }
+        .onAppear{
+            categoriesSelected = [productCategoryVM.categorySelected]
+        }
+    }
+    
+    @ViewBuilder
+    func ChipView(_ item: ProductCategory, isSelected: Bool) -> some View {
+        VStack(spacing: 10) {
+            Image(item.imageName)
+                .resizable()
+                .scaledToFill()
+                .frame(width: UIDevice.current.userInterfaceIdiom == .phone ? 50 : 100, height: UIDevice.current.userInterfaceIdiom == .phone ? 50 : 100)
+                .clipShape(.rect(cornerRadius: 8))
+            Text(item.rawValue)
+                .font(.callout)
+                .foregroundStyle(isSelected ? .white : Color.primary)
+            /*
+            if isSelected {
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundStyle(.white)
+            }
+            */
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background {
+            ZStack {
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(.background)
+                    .opacity(!isSelected ? 1 : 0)
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(.green.gradient)
+                    .opacity(isSelected ? 1 : 0)
+            }
         }
     }
 }

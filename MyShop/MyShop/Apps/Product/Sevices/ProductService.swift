@@ -11,8 +11,25 @@ import FirebaseFirestore
 class ProductService {
     private let db = Firestore.firestore()
 
+    
+    // Lấy All sản phẩm
+    func fetchAllProducts(completion: @escaping ([Product]) -> Void) {
+        db.collection("products")
+            .getDocuments { snapshot, error in
+                guard let documents = snapshot?.documents, error == nil else {
+                    completion([])
+                    return
+                }
+                let products = documents.compactMap { doc -> Product? in
+                    try? doc.data(as: Product.self)
+                }
+                completion(products)
+            }
+    }
+    
     // Lấy danh sách sản phẩm theo danh mục
-    func fetchProducts(for category: ProductCategory, completion: @escaping ([Product]) -> Void) {
+    func fetchProducts(for category: ProductCategory
+                       , completion: @escaping ([Product]) -> Void) {
         db.collection("products")
             .whereField("category", isEqualTo: category.rawValue)
             .getDocuments { snapshot, error in

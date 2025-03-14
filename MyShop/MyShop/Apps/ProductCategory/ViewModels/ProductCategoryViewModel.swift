@@ -9,4 +9,5 @@ import SwiftUI
 
 class ProductCategoryViewModel: ObservableObject {
     @Published var categories: [ProductCategory] = ProductCategory.allCases
+    @Published var categorySelected: ProductCategory = .all
 }

@@ -12,6 +12,8 @@
 		FA7E68DD2D83CE2B00A6A64A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FA7E68DC2D83CE2B00A6A64A /* FirebaseFirestore */; };
 		FA7E68DF2D83CE2B00A6A64A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = FA7E68DE2D83CE2B00A6A64A /* FirebaseStorage */; };
 		FA7E68E22D83CF1600A6A64A /* Cloudinary in Frameworks */ = {isa = PBXBuildFile; productRef = FA7E68E12D83CF1600A6A64A /* Cloudinary */; };
+		FACDF75E2D841236007D6AC0 /* ChipsSelection in Frameworks */ = {isa = PBXBuildFile; productRef = FACDF75D2D841236007D6AC0 /* ChipsSelection */; };
+		FACDF7602D841236007D6AC0 /* MyLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = FACDF75F2D841236007D6AC0 /* MyLibrary */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +36,9 @@
 				FA7E68DB2D83CE2B00A6A64A /* FirebaseDatabase in Frameworks */,
 				FA7E68DF2D83CE2B00A6A64A /* FirebaseStorage in Frameworks */,
 				FA7E68E22D83CF1600A6A64A /* Cloudinary in Frameworks */,
+				FACDF75E2D841236007D6AC0 /* ChipsSelection in Frameworks */,
 				FA7E68D92D83CE2B00A6A64A /* FirebaseAuth in Frameworks */,
+				FACDF7602D841236007D6AC0 /* MyLibrary in Frameworks */,
 				FA7E68DD2D83CE2B00A6A64A /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,6 +87,8 @@
 				FA7E68DC2D83CE2B00A6A64A /* FirebaseFirestore */,
 				FA7E68DE2D83CE2B00A6A64A /* FirebaseStorage */,
 				FA7E68E12D83CF1600A6A64A /* Cloudinary */,
+				FACDF75D2D841236007D6AC0 /* ChipsSelection */,
+				FACDF75F2D841236007D6AC0 /* MyLibrary */,
 			);
 			productName = MyShop;
 			productReference = FA7E68C12D83CCB500A6A64A /* MyShop.app */;
@@ -115,6 +121,7 @@
 			packageReferences = (
 				FA7E68D72D83CE2B00A6A64A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				FA7E68E02D83CF1600A6A64A /* XCRemoteSwiftPackageReference "cloudinary_ios" */,
+				FACDF75C2D841236007D6AC0 /* XCRemoteSwiftPackageReference "MyPackage" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FA7E68C22D83CCB500A6A64A /* Products */;
@@ -274,6 +281,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Ứng dụng cần truy cập camera để chụp ảnh sản phẩm.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Ứng dụng cần truy cập thư viện ảnh để chọn ảnh sản phẩm.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -314,6 +323,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Ứng dụng cần truy cập camera để chụp ảnh sản phẩm.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Ứng dụng cần truy cập thư viện ảnh để chọn ảnh sản phẩm.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -381,6 +392,14 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		FACDF75C2D841236007D6AC0 /* XCRemoteSwiftPackageReference "MyPackage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/duongcuong4395/MyPackage.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -408,6 +427,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FA7E68E02D83CF1600A6A64A /* XCRemoteSwiftPackageReference "cloudinary_ios" */;
 			productName = Cloudinary;
+		};
+		FACDF75D2D841236007D6AC0 /* ChipsSelection */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FACDF75C2D841236007D6AC0 /* XCRemoteSwiftPackageReference "MyPackage" */;
+			productName = ChipsSelection;
+		};
+		FACDF75F2D841236007D6AC0 /* MyLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FACDF75C2D841236007D6AC0 /* XCRemoteSwiftPackageReference "MyPackage" */;
+			productName = MyLibrary;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
